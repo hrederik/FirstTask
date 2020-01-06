@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DiamondsGenerator : MonoBehaviour
 {
@@ -15,11 +13,8 @@ public class DiamondsGenerator : MonoBehaviour
     {
         DisableDiamonds();
 
-        int startPoint;
-        int endPoint;
-
-        startPoint = Random.Range(0, _diamonds.Length - 1);
-        endPoint = Random.Range(startPoint, _diamonds.Length - 1);
+        int startPoint = Random.Range(0, _diamonds.Length - 1);
+        int endPoint = Random.Range(startPoint, _diamonds.Length - 1);
 
         for (int i = startPoint; i < endPoint; i++)
         {

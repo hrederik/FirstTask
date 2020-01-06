@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformGenerator : Singletone<PlatformGenerator>
+public class PlatformGenerator : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _platforms = new List<GameObject>();
-    [SerializeField] private float _generateDelay = 2;
+    [SerializeField] private float _delay = 2;
 
     private float _platformLength;
 
@@ -16,7 +16,13 @@ public class PlatformGenerator : Singletone<PlatformGenerator>
 
     public void StartGenerate()
     {
-        Invoke("Generate", _generateDelay);
+        StartCoroutine(GenerateDelay());
+    }
+
+    IEnumerator GenerateDelay()
+    {
+        yield return new WaitForSeconds(_delay);
+        Generate();
     }
 
     private void Generate()

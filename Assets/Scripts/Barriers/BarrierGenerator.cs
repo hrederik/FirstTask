@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BarrierGenerator : MonoBehaviour
 {
@@ -11,15 +9,16 @@ public class BarrierGenerator : MonoBehaviour
         Generate();
     }
 
+    private bool GetRandomBool()
+    {
+        return Random.Range(0, 100) <= 50;
+    }
+
     public void Generate()
     {
-        int random;
-
         for (int i = 0; i < _barriers.Length; i++)
         {
-            random = Random.Range(0, 12);
-
-            _barriers[i].SetActive(random <= 5);
+            _barriers[i].SetActive(GetRandomBool());
         }
     }
 }

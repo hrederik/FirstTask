@@ -2,15 +2,20 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class UserInterface : Singletone<UserInterface>
+public class UserInterface : MonoBehaviour
 {
 	[SerializeField] private GameObject _gameUI;
 	[SerializeField] private GameObject _gameOverUI;
-	
 	[Space]
+    [SerializeField] private Scores _scores;
 	[SerializeField] private Text _scoreLabel;
 
-    public void GameOver()
+    private void Start()
+    {
+        _scores.UpdateScores += UpdateScoreLabel;
+    }
+
+    public void ShowGameOverUI()
     {
         _gameUI.SetActive(false);
         _gameOverUI.SetActive(true);
@@ -18,8 +23,7 @@ public class UserInterface : Singletone<UserInterface>
 
 	public void UpdateScoreLabel(int amount)
 	{
-		if (_scoreLabel)
-			_scoreLabel.text = amount.ToString();
+        _scoreLabel.text = amount.ToString();
 	}
 
     public void Restart()
