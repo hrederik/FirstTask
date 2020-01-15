@@ -1,19 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class DeathTriger : MonoBehaviour
 {
-    private UserInterface _interface;
-
-    private void Start()
-    {
-        _interface = FindObjectOfType<UserInterface>();
-    }
+    [SerializeField] private UnityEvent HitEvent;
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.transform.GetComponent<PlayerMovement>())
         {
-            _interface.ShowGameOverUI();
+            HitEvent.Invoke();
         }
     }
 }
