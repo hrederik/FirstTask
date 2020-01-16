@@ -3,13 +3,13 @@ using UnityEngine.Events;
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField] private UnityEvent ExitEvent;
+    [SerializeField] private UnityEvent _exitEvent;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.GetComponent<PlayerMovement>())
         {
-            ExitEvent.Invoke();
+            _exitEvent.Invoke();
         }
     }
 }
