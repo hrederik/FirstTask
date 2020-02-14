@@ -2,7 +2,27 @@
 
 public class BarrierGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _barriers;
+    [SerializeField] private PlayerCollider[] _barriers;
+    [SerializeField] private UserInterface _interface;
+    [SerializeField] private GamePause _gamePause;
+
+    private void OnEnable()
+    {
+        foreach (var barrier in _barriers)
+        {
+            barrier.HitEvent += _interface.ShowGameOverUI;
+            barrier.HitEvent += _gamePause.StopGame;
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (var barrier in _barriers)
+        {
+            barrier.HitEvent -= _interface.ShowGameOverUI;
+            barrier.HitEvent -= _gamePause.StopGame;
+        }
+    }
 
     private void Start()
     {
@@ -18,7 +38,7 @@ public class BarrierGenerator : MonoBehaviour
     {
         for (int i = 0; i < _barriers.Length; i++)
         {
-            _barriers[i].SetActive(GetRandomBool());
+            _barriers[i].gameObject.SetActive(GetRandomBool());
         }
     }
 }

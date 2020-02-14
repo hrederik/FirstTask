@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class FollowTarget : MonoBehaviour
+public class TargetFollowing : MonoBehaviour
 {
     [SerializeField] private GameObject _target;
 

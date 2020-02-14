@@ -3,12 +3,12 @@ using UnityEngine.Events;
 
 public class Scores : MonoBehaviour
 {
-    public static int Value { get; private set; }
-    public event UnityAction<int> UpdateScores;
+    private int _value;
+    public event UnityAction<int> ScoresUpdated;
 
-    public void AddScores(int amount)
+    public void OnDiamondCollected(int amount)
     {
-        Value += amount;
-        UpdateScores(Value);
+        _value += amount;
+        ScoresUpdated(_value);
     }
 }

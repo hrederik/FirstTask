@@ -10,9 +10,14 @@ public class UserInterface : MonoBehaviour
     [SerializeField] private Scores _scores;
 	[SerializeField] private Text _scoreLabel;
 
-    private void Start()
+    private void OnEnable()
     {
-        _scores.UpdateScores += UpdateScoreLabel;
+        _scores.ScoresUpdated += OnScoresUpdate;
+    }
+
+    private void OnDisable()
+    {
+        _scores.ScoresUpdated -= OnScoresUpdate;
     }
 
     public void ShowGameOverUI()
@@ -21,7 +26,7 @@ public class UserInterface : MonoBehaviour
         _gameOverUI.SetActive(true);
     }
 
-	public void UpdateScoreLabel(int amount)
+	public void OnScoresUpdate(int amount)
 	{
         _scoreLabel.text = amount.ToString();
 	}

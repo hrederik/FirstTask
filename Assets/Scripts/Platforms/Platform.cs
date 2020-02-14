@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _exitEvent;
+    [SerializeField] private DiamondsGenerator _diamondsGenerator;
+    [SerializeField] private BarrierGenerator _barrierGenerator;
 
-    private void OnTriggerEnter(Collider other)
+    public void OnPlaced()
     {
-        if (other.transform.GetComponent<PlayerMovement>())
-        {
-            _exitEvent.Invoke();
-        }
+        _diamondsGenerator.Generate();
+        _barrierGenerator.Generate();
     }
 }

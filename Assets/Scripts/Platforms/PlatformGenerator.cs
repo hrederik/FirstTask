@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformGenerator : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _platforms = new List<GameObject>();
+    [SerializeField] private List<Platform> _platforms = new List<Platform>();
     [SerializeField] private float _delay = 2;
 
     private float _platformLength;
@@ -14,7 +14,7 @@ public class PlatformGenerator : MonoBehaviour
         _platformLength = _platforms[0].transform.localScale.z;
     }
 
-    public void StartGenerate()
+    public void StartExtension()
     {
         StartCoroutine(GenerateDelay());
     }
@@ -22,19 +22,18 @@ public class PlatformGenerator : MonoBehaviour
     IEnumerator GenerateDelay()
     {
         yield return new WaitForSeconds(_delay);
-        Generate();
+        ExtendGroundLine();
     }
 
-    private void Generate()
+    private void ExtendGroundLine()
     {
-        GameObject temp = _platforms[0];
+        Platform first = _platforms[0];
+        Platform last = _platforms[_platforms.Count - 1];
 
-        temp.transform.position = new Vector3(0, 0, _platforms[_platforms.Count - 1].transform.position.z + _platformLength);
+        first.transform.position = new Vector3(0, 0, last.transform.position.z + _platformLength);
+        first.OnPlaced();
 
-        temp.GetComponent<DiamondsGenerator>().Generate();
-        temp.GetComponent<BarrierGenerator>().Generate();
-
-        _platforms.RemoveAt(0);
-        _platforms.Add(temp);
+        _platforms.Remove(first);
+        _platforms.Add(first);
     }
 }

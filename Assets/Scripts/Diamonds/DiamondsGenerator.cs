@@ -2,11 +2,36 @@
 
 public class DiamondsGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _diamonds;
+    [SerializeField] private CollectableDiamond[] _diamonds;
+    [SerializeField] private Scores _scores;
+
+    private void OnEnable()
+    {
+        foreach (var diamond in _diamonds)
+        {
+            diamond.DiamondCollected += _scores.OnDiamondCollected;
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (var diamond in _diamonds)
+        {
+            diamond.DiamondCollected -= _scores.OnDiamondCollected;
+        }
+    }
 
     private void Start()
     {
         Generate();
+    }
+
+    private void DisableDiamonds()
+    {
+        for (int i = 0; i < _diamonds.Length; i++)
+        {
+            _diamonds[i].gameObject.SetActive(false);
+        }
     }
 
     public void Generate()
@@ -18,15 +43,7 @@ public class DiamondsGenerator : MonoBehaviour
 
         for (int i = startPoint; i < endPoint; i++)
         {
-            _diamonds[i].SetActive(true);
-        }
-    }
-
-    private void DisableDiamonds()
-    {
-        for (int i = 0; i < _diamonds.Length; i++)
-        {
-            _diamonds[i].SetActive(false);
+            _diamonds[i].gameObject.SetActive(true);
         }
     }
 }
