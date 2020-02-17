@@ -3,18 +3,13 @@ using UnityEngine.Events;
 
 public class PlayerCollider : MonoBehaviour
 {
-    private UnityAction _hitEvent;
-    public event UnityAction HitEvent
-    {
-        add => _hitEvent += value;
-        remove => _hitEvent -= value;
-    }
+    public UnityAction HitEvent;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (IsPlayer(collision))
         {
-            _hitEvent();
+            HitEvent();
         }
     }
 
