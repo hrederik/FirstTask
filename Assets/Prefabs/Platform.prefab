@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 3931848977363324828}
   - component: {fileID: 3931848977363324831}
   - component: {fileID: 3931848977363324830}
-  - component: {fileID: 3931848977363324834}
+  - component: {fileID: 5583005925323271736}
   m_Layer: 0
   m_Name: Barrier 1
   m_TagString: Untagged
@@ -126,7 +126,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3931848977363324834
+--- !u!114 &5583005925323271736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,9 +135,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3931848977363324825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d8664ea0b8ad1949abbc54e4e867f07, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ce7034a5319a354db77832558e25bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _exitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3931848977784991965
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +204,7 @@ GameObject:
   - component: {fileID: 3931848978138713137}
   - component: {fileID: 3931848978138713136}
   - component: {fileID: 3931848978138713139}
-  - component: {fileID: 3931848978138713143}
+  - component: {fileID: 8779305624356374763}
   m_Layer: 0
   m_Name: Barrier 2
   m_TagString: Untagged
@@ -282,7 +285,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3931848978138713143
+--- !u!114 &8779305624356374763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291,9 +294,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3931848978138713138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d8664ea0b8ad1949abbc54e4e867f07, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ce7034a5319a354db77832558e25bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _exitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3931848978160736283
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +392,7 @@ GameObject:
   - component: {fileID: 3931848978454034411}
   - component: {fileID: 3931848978454034410}
   - component: {fileID: 3931848978454034405}
-  - component: {fileID: 3931848978454034409}
+  - component: {fileID: 4695707697118875126}
   m_Layer: 0
   m_Name: Barrier 3
   m_TagString: Untagged
@@ -467,7 +473,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3931848978454034409
+--- !u!114 &4695707697118875126
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -476,9 +482,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3931848978454034404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d8664ea0b8ad1949abbc54e4e867f07, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ce7034a5319a354db77832558e25bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _exitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3931848978540230264
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,9 +648,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _barriers:
-  - {fileID: 3931848977363324834}
-  - {fileID: 3931848978138713143}
-  - {fileID: 3931848978454034409}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _interface: {fileID: 0}
   _gamePause: {fileID: 0}
 --- !u!1001 &227176161888744882

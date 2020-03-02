@@ -1,44 +1,29 @@
 ﻿using UnityEngine;
 
-public class BarrierGenerator : MonoBehaviour
+public class BarrierGenerator : Generator
 {
-    [SerializeField] private PlayerCollider[] _barriers;
     [SerializeField] private UserInterface _interface;
     [SerializeField] private GamePause _gamePause;
 
     private void OnEnable()
     {
-        foreach (var barrier in _barriers)
+        foreach (var barrier in Objects)
         {
-            barrier.HitEvent += _interface.ShowGameOverUI;
-            barrier.HitEvent += _gamePause.StopGame;
+            barrier.GetComponent<PlayerTriger>().PlayerInteracted += OnBarrierHit;
         }
     }
 
     private void OnDisable()
     {
-        foreach (var barrier in _barriers)
+        foreach (var barrier in Objects)
         {
-            barrier.HitEvent -= _interface.ShowGameOverUI;
-            barrier.HitEvent -= _gamePause.StopGame;
+            barrier.GetComponent<PlayerTriger>().PlayerInteracted -= OnBarrierHit;
         }
-    }
+    }    
 
-    private void Start()
+    private void OnBarrierHit()
     {
-        Generate();
-    }
-
-    private bool GetRandomBool()
-    {
-        return Random.Range(0, 100) <= 50;
-    }
-
-    public void Generate()
-    {
-        for (int i = 0; i < _barriers.Length; i++)
-        {
-            _barriers[i].gameObject.SetActive(GetRandomBool());
-        }
+        _interface.ShowGameOverUI();
+        _gamePause.StopGame();
     }
 }

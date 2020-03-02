@@ -3,18 +3,26 @@ using UnityEngine.Events;
 
 public class PlayerTriger : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _exitEvent;
+    [SerializeField] private UnityEvent _playerInteracted;
+    public event UnityAction PlayerInteracted
+    {
+        add => _playerInteracted.AddListener(value);
+        remove => _playerInteracted.RemoveListener(value);
+    }
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (IsPlayer(collider))
+        if (PlayerChecker.IsPlayer(collider))
         {
-            _exitEvent.Invoke();
+            _playerInteracted.Invoke();
         }
     }
 
-    private bool IsPlayer(Collider collider)
+    private void OnCollisionEnter(Collision collision)
     {
-        return collider.transform.GetComponent<PlayerMovement>();
+        if (PlayerChecker.IsPlayer(collision))
+        {
+            _playerInteracted.Invoke();
+        }
     }
 }

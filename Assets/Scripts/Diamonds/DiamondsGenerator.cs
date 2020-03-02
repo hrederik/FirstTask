@@ -1,49 +1,27 @@
 ﻿using UnityEngine;
 
-public class DiamondsGenerator : MonoBehaviour
+public class DiamondsGenerator : Generator
 {
-    [SerializeField] private CollectableDiamond[] _diamonds;
     [SerializeField] private Scores _scores;
 
     private void OnEnable()
     {
-        foreach (var diamond in _diamonds)
+        foreach (var diamond in Objects)
         {
-            diamond.DiamondCollected += _scores.OnDiamondCollected;
+            diamond.GetComponent<Diamond>().DiamondCollected += OnDiamondCollected;
         }
     }
 
     private void OnDisable()
     {
-        foreach (var diamond in _diamonds)
+        foreach (var diamond in Objects)
         {
-            diamond.DiamondCollected -= _scores.OnDiamondCollected;
+            diamond.GetComponent<Diamond>().DiamondCollected -= OnDiamondCollected;
         }
     }
 
-    private void Start()
+    private void OnDiamondCollected(int amount)
     {
-        Generate();
-    }
-
-    private void DisableDiamonds()
-    {
-        for (int i = 0; i < _diamonds.Length; i++)
-        {
-            _diamonds[i].gameObject.SetActive(false);
-        }
-    }
-
-    public void Generate()
-    {
-        DisableDiamonds();
-
-        int startPoint = Random.Range(0, _diamonds.Length - 1);
-        int endPoint = Random.Range(startPoint, _diamonds.Length - 1);
-
-        for (int i = startPoint; i < endPoint; i++)
-        {
-            _diamonds[i].gameObject.SetActive(true);
-        }
+        _scores.OnDiamondCollected(amount);
     }
 }
