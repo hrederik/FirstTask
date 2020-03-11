@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerTriger : MonoBehaviour
+public class PlayerTrigger : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _playerInteracted;
+    [SerializeField] private UnityEvent _playerInteracted = new UnityEvent();
     public event UnityAction PlayerInteracted
     {
         add => _playerInteracted.AddListener(value);

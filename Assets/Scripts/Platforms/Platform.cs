@@ -2,8 +2,8 @@
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField] private DiamondsGenerator _diamondsGenerator;
-    [SerializeField] private BarrierGenerator _barrierGenerator;
+    [SerializeField] private Generator _diamondsGenerator;
+    [SerializeField] private Generator _barrierGenerator;
 
     public void OnPlaced()
     {

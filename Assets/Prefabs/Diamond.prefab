@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33799073073108966}
   - component: {fileID: 23538843899766722}
   - component: {fileID: 65790726828452220}
-  - component: {fileID: 114412737943229458}
+  - component: {fileID: 1756121076065656051}
   m_Layer: 0
   m_Name: Diamond
   m_TagString: Untagged
@@ -93,7 +93,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114412737943229458
+--- !u!114 &1756121076065656051
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,7 +102,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1528706712960512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0afba48e6208b94493ec3d22fab61ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ce7034a5319a354db77832558e25bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreAmount: 1
+  _playerInteracted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1528706712960512}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
