@@ -6,9 +6,9 @@ public class Scores : MonoBehaviour
     private int _value;
     public event UnityAction<int> ScoresUpdated;
 
-    public void OnDiamondCollected()
+    public void OnDiamondCollected(int amount)
     {
-        _value++;
+        _value += amount;
         ScoresUpdated(_value);
     }
 }

@@ -3,14 +3,14 @@
 public class Generator : MonoBehaviour
 {
     [SerializeField] private PlayerTrigger[] _objects;
-    [SerializeField] private MonoBehaviour _eventProvider;
-    private IGenerated EventProvider => (IGenerated)_eventProvider;
+    [SerializeField] private MonoBehaviour _listenerProvider;
+    private IListenerProvider ListenerProvider => (IListenerProvider)_listenerProvider;
 
     private void OnEnable()
     {
         foreach (var item in _objects)
         {
-            item.PlayerInteracted += EventProvider.OnInteracted;
+            ListenerProvider.AddListener(item);
         }
     }
 
@@ -21,9 +21,9 @@ public class Generator : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (var key in _objects)
+        foreach (var item in _objects)
         {
-            key.PlayerInteracted -= EventProvider.OnInteracted;
+            ListenerProvider.RemoveListener(item);
         }
     }
 

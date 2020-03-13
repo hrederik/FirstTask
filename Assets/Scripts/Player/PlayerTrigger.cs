@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class PlayerTrigger : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _playerInteracted = new UnityEvent();
+    [SerializeField] private UnityEvent _playerInteracted;
     public event UnityAction PlayerInteracted
     {
         add => _playerInteracted.AddListener(value);
