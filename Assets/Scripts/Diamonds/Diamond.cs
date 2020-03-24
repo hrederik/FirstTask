@@ -1,17 +1,13 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 public class Diamond : PlayerTrigger
 {
     [SerializeField] private int _score = 1;
-    public event UnityAction<int> Collected;
+    [SerializeField] private Scores _scores;
 
-    private void OnTriggerEnter(Collider collider)
+    protected override void OnPlayerEnter()
     {
-        if (PlayerChecker.IsPlayer(collider))
-        {
-            Collected(_score);
-            gameObject.SetActive(false);
-        }
+        _scores.OnDiamondCollected(_score);
+        gameObject.SetActive(false);
     }
 }

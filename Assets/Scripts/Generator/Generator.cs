@@ -3,28 +3,10 @@
 public class Generator : MonoBehaviour
 {
     [SerializeField] private PlayerTrigger[] _objects;
-    [SerializeField] private MonoBehaviour _listenerProvider;
-    private IListenerProvider ListenerProvider => (IListenerProvider)_listenerProvider;
-
-    private void OnEnable()
-    {
-        foreach (var item in _objects)
-        {
-            ListenerProvider.AddListener(item);
-        }
-    }
 
     private void Start()
     {
         Generate();
-    }
-
-    private void OnDisable()
-    {
-        foreach (var item in _objects)
-        {
-            ListenerProvider.RemoveListener(item);
-        }
     }
 
     public void Generate()
